@@ -1,0 +1,15 @@
+vectorsize=100
+entitysize=102
+net=net.relation_extraction_predictedHidden
+numClasses=10
+hidden=100
+lrate=0.03
+batchsize=50
+filtersize=3
+nkerns=100
+kmax=3
+contextsize=25
+lambda2=0.00001
+hiddentype=80
+file=data/fueldataset_jointPaper_final_predictedHidden_train+dev+test
+n_epochs=11

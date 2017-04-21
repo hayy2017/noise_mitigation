@@ -1,0 +1,41 @@
+dsdir: dataset/
+net_path: mlpnet
+devscores: dev.probs
+testscores: test.probs
+matrixdev: matrixdev
+matrixtest: matrixtest
+
+Etrain: data/Etrain
+Edev: data/Edev
+Etest: data/Etest
+typefile: types
+devcontexts_big: dev.sampled.ordered
+traincontexts: train.sampled.ordered
+testcontexts: test.sampled.ordered
+
+onlynt: False
+norm: false
+numtype: 102
+embedding_size: 100
+cost_fn: cross
+batch_sizes: {train: 1000,
+                dev: 50000,
+                devbig: 100000,
+                 test: 100000
+              }
+init_lr: 0.005
+step_rule: rms
+max_num_epochs: 50
+valid_epochs: 2
+finish_if_no_improvement: 2
+features: [contexts_convinp.win10] #['contexts', 'mentions']
+contexts_convinp.win10: {
+  model: ff,
+  max_len: 10
+ }
+mentions: {
+  max_len: 4,
+  model: mean
+}
+hidden_units: 500
+l2_regularization: 0.00001
