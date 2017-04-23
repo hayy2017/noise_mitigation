@@ -12,6 +12,7 @@ For example:
 
 
 In the experiments, each entity is annotated with all types. E.g., entity (/m/01mngw) has (-location-city, -location) as gold types. 
+(We don't use the names for this work)
 
 File "types" contains the set of types in the dataset. 
 
