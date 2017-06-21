@@ -1,0 +1,56 @@
+embeddings_path: /dir/to/embeddings.txt
+dsdir: /dir/to/fuel_joint_files/
+typefile: /dir/to/types
+
+net_path: cnnnet
+devscores: dev.probs
+testscores: test.probs
+matrixdev: matrixdev
+matrixtest: matrixtest
+
+
+norm: false
+numtype: 102
+allow_miss_ent: True
+embedding_size: 100
+cost_fn: cross
+batch_sizes: {train: 100,
+                dev: 50000,
+                devbig: 100000,
+                 test: 100000
+              }
+init_lr: 0.0001
+step_rule: rms
+max_num_epochs: 50
+valid_epochs: 2
+finish_if_no_improvement: 2
+features: [contexts] #['contexts', 'mentions']
+contexts: {
+  model: cnn,
+  cnn_config: {
+    filter_sizes: [2,3],
+    num_filters: 100
+  },
+  max_len: 10
+ }
+mentions: {
+  max_len: 4,
+  model: mean
+}
+hidden_units: 200
+l2_regularization: 0.0000001
+#relation arguments
+hidden4rel: False
+vectorsize: 100
+entitysize: 102
+numClasses: 10
+hidden: 100
+filtersize: 3
+nkerns: 100
+kmax: 3
+contextsize: 25
+lambda2: 0.00001
+combinationMethod: pool
+hiddentype: 80
+file: /dir/to/fueldataset_cluewebData_cluewebEmbeddings_entityTypes_notBiased_noMIML_correct
+n_epochs: 11

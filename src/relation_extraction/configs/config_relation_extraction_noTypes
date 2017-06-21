@@ -10,6 +10,6 @@ nkerns=100
 kmax=3
 contextsize=25
 lambda2=0.00001
-file=data/fueldataset_jointPaper_final_noTypes_train+dev+test
+file=/dir/to/fueldataset_jointPaper_final_noTypes_train+dev+test
 n_epochs=8
 noTypes=True

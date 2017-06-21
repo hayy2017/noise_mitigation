@@ -66,7 +66,7 @@ import time
 from layers import HiddenLayer
 from myExtensions import F1MultiClassesExtension,\
     GetPRcurve, WriteBest
-from train_joint import JointUnaryBinary,\
+from train import JointUnaryBinary,\
     get_argument_parser
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
