@@ -455,3 +455,8 @@ def softmax_layer(h, y, hidden_size, num_targets, cost_fn='cross'):
     misclassify_rate.name = 'error_rate'
     return cost, pat1, updates, misclassify_rate
 
+def initialize_inout(brick, fan_in, fan_out,seed=1):
+    W_bound = numpy.sqrt(6. / (fan_in + fan_out)) 
+    brick.weights_init = initialization.Uniform(width=2 * W_bound)
+    brick.biases_init = initialization.Constant(0)
+    brick.initialize()
