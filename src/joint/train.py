@@ -63,7 +63,7 @@ from myutils import debug_print, fillt2i, \
 import theano.tensor as T
 import yaml
 import time
-from mlp import HiddenLayer
+from layers import HiddenLayer
 from myExtensions import F1MultiClassesExtension,\
     GetPRcurve, WriteBest, ModelResultsMI, ALLModelResultsMI
 
