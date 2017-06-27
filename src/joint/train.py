@@ -50,21 +50,21 @@ from fuel.transformers import Transformer, Merge, Cast
 import h5py
 from picklable_itertools import chain, repeat, imap, iter_
 from picklable_itertools.base import BaseItertool
-from src.classification.nn import cross_entropy_loss, track_best, \
+from model import cross_entropy_loss, track_best, \
     MainLoop, ranking_loss, softmax_layer
-from src.classification.nn.cm.rel_type_joint.convWithAttention import LeNetConvPoolLayer
-from src.classification.nn.cm.rel_type_joint.model import MultiMisclassificationRate, StaticLookupTable, initialize, \
+from convWithAttention import LeNetConvPoolLayer
+from model import MultiMisclassificationRate, StaticLookupTable, initialize, \
     LettersTransposer, create_cnn_general, SEQ_INPUTS, create_rec, REC_MODELS, \
     GenerateNegPosTransformer, initialize_inout
 from blocks.roles import add_role, WEIGHT
-from src.common.myutils import debug_print, fillt2i, \
+from myutils import debug_print, fillt2i, \
     build_type2entmatrix, big2small, write_small, load_lines_info, MyPool, \
     computeFscore, calcPRF, softmax, normalize
 import theano.tensor as T
 import yaml
 import time
-from src.classification.nn.cm.rel_type_joint.mlp import HiddenLayer
-from src.classification.nn.cm.rel_type_joint.myExtensions import F1MultiClassesExtension,\
+from mlp import HiddenLayer
+from myExtensions import F1MultiClassesExtension,\
     GetPRcurve, WriteBest, ModelResultsMI, ALLModelResultsMI
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
@@ -699,8 +699,8 @@ class JointUnaryBinary(object):
     
     def build_relation_network(self, ent1=None, ent2=None, entityrepresentationsize=102, multi=True):
         dt = 'float32'  # @UndefinedVariabl
-        from src.classification.nn.cm.rel_type_joint.logistic_sgd_MIML import LogisticRegressionMIML
-        from src.classification.nn.cm.rel_type_joint.logistic_sgd import LogisticRegression
+        from logistic_sgd_MIML import LogisticRegressionMIML
+        from logistic_sgd import LogisticRegression
 
         # train network
         rng = numpy.random.RandomState(self.curSeed)
@@ -1493,11 +1493,11 @@ if __name__ == '__main__':
     multi = False
     print args.multi
     if args.multi:
-        from src.classification.nn.cm.rel_type_joint.logistic_sgd_MIML import LogisticRegression
+        from logistic_sgd_MIML import LogisticRegression
         multi = True
         print 'multi'
     else:
-        from src.classification.nn.cm.rel_type_joint.logistic_sgd import LogisticRegression
+        from logistic_sgd import LogisticRegression
     if args.train:
         trainer.train_joint(num_epochs=args.max_epochs, use_bokeh=args.live_plotting,
                     checkpoint_path=args.checkpoint, DEBUG=False, shuffling=True, multi=args.multi, devset='dev')
